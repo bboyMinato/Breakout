@@ -12,6 +12,7 @@ struct BrickType
 };
 
 using BrickTypeList = std::vector <BrickType>;
+using Grid = std::vector<std::vector<int>>;
 
 class Brick
 {
@@ -27,5 +28,6 @@ protected:
 	int _height = 0;
 	int _hitPoints = 0;
 	int _breakScore = 0;
-	SDL_Texture* _texture = nullptr;
+	std::string source;
+	std::string ID;
 };

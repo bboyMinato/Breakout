@@ -4,6 +4,7 @@
 #include "../include/Input.h"
 #include "../include/Ball.h"
 #include "../include/CollisionHandler.h"
+#include "../include/Parser.h"
 
 Engine* Engine::_instance = nullptr;
 Paddle* player = nullptr;
@@ -32,6 +33,10 @@ void Engine::Init()
     TextureManager::GetInstance()->LoadTexture("background", "res\\img\\space_background.png");
     TextureManager::GetInstance()->LoadTexture("player", "res\\img\\paddle.png");
 	TextureManager::GetInstance()->LoadTexture("ball", "res\\img\\ball_sprite.png");
+
+	LevelParser::GetInstance()->Load("Level", "res/Level.xml");
+
+	_levelMap = LevelParser::GetInstance()->GetLevel("Level");
 
     player = new Paddle(new Properties("player", 433, 980, 158, 20));
 	_entityMap.push_back(player);
@@ -64,6 +69,8 @@ void Engine::Render()
     player->Draw();
 	ball->Draw();
 
+	//_levelMap->Render();
+
     SDL_RenderPresent(_renderer);
 }
 
@@ -71,6 +78,8 @@ void Engine::Update()
 {
 	player->Update();	
 	ball->Update();		
+	
+	_levelMap->Update();
 
 	BounceOfPaddle();
 }

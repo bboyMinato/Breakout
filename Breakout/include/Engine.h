@@ -3,6 +3,7 @@
 #include <vector>
 #include "SDL.h"
 #include "Entity.h"
+#include "LevelMap.h"
 
 constexpr int SCREEN_WIDTH = 1024;
 constexpr int SCREEN_HEIGHT = 1024;
@@ -32,4 +33,5 @@ private:
 
 	SDL_Window* _window = nullptr;
 	SDL_Renderer* _renderer = nullptr;
+	LevelMap* _levelMap = nullptr;
 };
