@@ -32,13 +32,9 @@ bool LevelParser::Parse(std::string id, std::string source)
 	
 	for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{				
-		if (e->Value() == std::string("BrickTypes"))
-		{				
-			for (TiXmlElement* v = e->FirstChildElement(); v != nullptr; v = v->NextSiblingElement())
-			{				
-				std::cout << v->Value() << std::endl;
-				bricktypes.push_back(ParseBricks(e));
-			}
+		for (TiXmlElement* v = e->FirstChildElement(); v != nullptr; v = v->NextSiblingElement())
+		{			
+			bricktypes.push_back(ParseBricks(v));
 		}
 	}
 
@@ -58,20 +54,20 @@ bool LevelParser::Parse(std::string id, std::string source)
 
 BrickType LevelParser::ParseBricks(TiXmlElement* xmlBricks)
 {
-	BrickType brickAttribute;	
+	BrickType brickAttribute;		
+		
+	brickAttribute.ID = xmlBricks->Attribute("Id");
+		
+	brickAttribute.texture = xmlBricks->Attribute("Texture");		
 
-	TiXmlElement* brickType = xmlBricks->FirstChildElement();
+	xmlBricks->Attribute("HitPoints", &brickAttribute.hitPoints);	
+		
+	brickAttribute.hitSound = xmlBricks->Attribute("HitSound");	
 
-	if (brickType->Attribute("Id"))
-		brickAttribute.ID = brickType->Attribute("Id");
+	if (xmlBricks->Attribute("BreakSound"))
+		brickAttribute.breakSound = xmlBricks->Attribute("BreakSound");	
 
-	std::cout << brickAttribute.ID << std::endl;
-	
-	if (brickType->Attribute("Texture"))
-		brickAttribute.source = brickType->Attribute("Texture");
-	
-	if (brickType->Attribute("HitPoints"))
-		brickType->Attribute("HitPoints", &brickAttribute.hitPoints);
+	xmlBricks->Attribute("BreakScore", &brickAttribute.breakScore);		
 
 	return brickAttribute;
 }

@@ -7,8 +7,10 @@ struct BrickType
 {	
 	int hitPoints = 0;
 	int breakScore = 0;
-	std::string source;
+	std::string texture;
 	std::string ID;
+	std::string hitSound;
+	std::string breakSound;	
 };
 
 using BrickTypeList = std::vector <BrickType>;

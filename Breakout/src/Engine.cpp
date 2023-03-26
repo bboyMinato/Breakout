@@ -68,7 +68,7 @@ void Engine::Render()
     TextureManager::GetInstance()->Draw("background", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);   
     player->Draw();
 	ball->Draw();
-
+		
 	//_levelMap->Render();
 
     SDL_RenderPresent(_renderer);

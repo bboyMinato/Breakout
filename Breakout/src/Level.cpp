@@ -10,10 +10,8 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 
 	for (size_t i = 0; i < _brickType.size(); i++)
 	{
-		//TextureManager::GetInstance()->LoadTexture(_brickType[i].ID, _brickType[i].source);
-		std::cout << _brickType[i].source << std::endl;
-	}
-		
+		TextureManager::GetInstance()->LoadTexture(_brickType[i].ID, _brickType[i].texture);	
+	}	
 }
 
 void Level::Render()
@@ -24,7 +22,7 @@ void Level::Render()
 		{
 			//char brickID = _grid[i][j];
 
-			//std::cout << _grid[i][j] << std::endl;
+			std::cout << _grid[i][j] << std::endl;
 		}
 	}
 }
