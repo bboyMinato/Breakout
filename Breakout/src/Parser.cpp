@@ -42,7 +42,7 @@ bool LevelParser::Parse(std::string id, std::string source)
 	for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
 		if (e->Value() == std::string("Bricks"))
-		{
+		{			
 			Level* newLevel = ParseLevel(e, bricktypes, rowCount, columnCount, rowSpacing, columnSpacing);
 			levelMap->_mapLevel.push_back(newLevel);
 		}
@@ -73,22 +73,16 @@ BrickType LevelParser::ParseBricks(TiXmlElement* xmlBricks)
 }
 
 Level* LevelParser::ParseLevel(TiXmlElement* xmlLevel, BrickTypeList brickTypes, int rowCount, int colCount, int rowSpacing, int colSpacing)
-{
-	std::string matrix;	
+{	
+	std::string matrix;		
 
-	for (TiXmlElement* e = xmlLevel->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
-	{
-		if (e->Value() == std::string("Bricks"))
-		{
-			matrix = e->GetText();			
-			break;
-		}
-	}
+	if (xmlLevel->Value() == std::string("Bricks"))
+		matrix = xmlLevel->GetText();
 
 	std::istringstream iss(matrix);
 	std::string id;
-
-	Grid grid(rowCount, std::vector<int>(colCount, 0));
+		
+	Board board(rowCount, std::vector<std::string>(colCount));
 
 	for (size_t row = 0; row < rowCount; row++)
 	{
@@ -96,14 +90,14 @@ Level* LevelParser::ParseLevel(TiXmlElement* xmlLevel, BrickTypeList brickTypes,
 		{
 			std::getline(iss, id, ' ');
 			std::stringstream converter(id);
-			converter >> grid[row][col];
-
+			converter >> board[row][col];	
+						
 			if (!iss.good())
 				break;
 		}
 	}
-
-	return (new Level(rowCount, colCount, rowSpacing, colSpacing, brickTypes));
+	
+	return (new Level(rowCount, colCount, rowSpacing, colSpacing, brickTypes, board));
 }
 
 LevelParser::~LevelParser()

@@ -66,10 +66,13 @@ void Engine::Render()
     SDL_RenderClear(_renderer);
 
     TextureManager::GetInstance()->Draw("background", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);   
-    player->Draw();
-	ball->Draw();
-		
-	//_levelMap->Render();
+ 
+	for (auto i = 0; i < _entityMap.size(); i++)
+	{
+		_entityMap[i]->Draw();
+	}
+
+	_levelMap->Render();
 
     SDL_RenderPresent(_renderer);
 }

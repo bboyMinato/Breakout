@@ -5,7 +5,7 @@
 #include "Entity.h"
 #include "LevelMap.h"
 
-constexpr int SCREEN_WIDTH = 1024;
+constexpr int SCREEN_WIDTH = 1920;
 constexpr int SCREEN_HEIGHT = 1024;
 
 class Engine
