@@ -17,6 +17,7 @@ struct BrickType
 
 using BrickTypeList = std::vector <BrickType>;
 using Board = std::vector<std::vector<std::string>>;
+extern std::vector<Brick*> _bricks;
 
 class Brick
 {
