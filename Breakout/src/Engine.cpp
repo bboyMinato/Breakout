@@ -5,6 +5,7 @@
 #include "../include/Ball.h"
 #include "../include/CollisionHandler.h"
 #include "../include/Parser.h"
+#include "../include/Level.h"
 
 Engine* Engine::_instance = nullptr;
 Paddle* player = nullptr;
@@ -52,6 +53,8 @@ void Engine::Clean()
     delete player;
 	delete ball;
 
+	Level::Clean();
+	
 	SDL_DestroyRenderer(_renderer);
 	SDL_DestroyWindow(_window);
 }
@@ -94,12 +97,12 @@ void Engine::Events()
 
 void Engine::BounceOfPaddle()
 {
-	if (CollisionHandler::CheckCollision(player, ball) && ball->_box.x < player->_box.x + player->_box.w / 2)
+	if (CollisionHandler::GetInstance()->CheckCollision(player, ball) && ball->_box.x < player->_box.x + player->_box.w / 2)
 	{
 		ball->SetVelocity(-1, -1);
 	}
 
-	else if (CollisionHandler::CheckCollision(player, ball) && ball->_box.x > player->_box.x + player->_box.w / 2)
+	else if (CollisionHandler::GetInstance()->CheckCollision(player, ball) && ball->_box.x > player->_box.x + player->_box.w / 2)
 	{
 		ball->SetVelocity(1, -1);
 	}

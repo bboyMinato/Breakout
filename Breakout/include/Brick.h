@@ -17,16 +17,16 @@ struct BrickType
 
 using BrickTypeList = std::vector <BrickType>;
 using Board = std::vector<std::vector<std::string>>;
-extern std::vector<Brick*> _bricks;
 
-class Brick
+class Brick 
 {
-public:
+public:	
 	Brick(BrickType* bricktype);
 	~Brick();
 
 	void Render();
 	void Update();
+	void Clean();
 	
 	void SetPositionX(float pos) { _position.X = pos; }
 	void SetPositionY(float pos) { _position.Y = pos; }
@@ -34,9 +34,14 @@ public:
 	inline int GetWidth() { return _width; }
 	inline int GetHeight() { return _height; }
 
+	SDL_Rect _box = { 0,0,0,0 };
+
 protected:
 	int _width = 0;
 	int _height = 0;
+
 	BrickType* _bricktype = nullptr;
 	Vector2D _position;	
+
+	//std::vector<Brick*> _bricks;
 };

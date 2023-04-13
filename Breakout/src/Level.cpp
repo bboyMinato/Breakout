@@ -27,7 +27,7 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 				{
 					brick = new Brick(&_brickType[k]);
 					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i* brick->GetHeight());
+					brick->SetPositionY(rowSpacing + i * brick->GetHeight());							
 					_bricks.push_back(brick);
 					break;
 				}
@@ -36,7 +36,7 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 				{
 					brick = new Brick(&_brickType[k+1]);
 					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());
+					brick->SetPositionY(rowSpacing + i * brick->GetHeight());					
 					_bricks.push_back(brick);
 					break;
 				}
@@ -45,7 +45,7 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 				{
 					brick = new Brick(&_brickType[k+2]);
 					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());
+					brick->SetPositionY(rowSpacing + i * brick->GetHeight());					
 					_bricks.push_back(brick);
 					break;
 				}
@@ -54,13 +54,13 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 				{
 					brick = new Brick(&_brickType[k+3]);
 					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());
+					brick->SetPositionY(rowSpacing + i * brick->GetHeight());					
 					_bricks.push_back(brick);
 					break;
 				}
 			}				
 		}	
-	}			
+	}
 }
 
 void Level::Render()
@@ -76,10 +76,14 @@ void Level::Update()
 }
 
 void Level::Clean()
-{
+{	
 }
 
 Level::~Level()
 {
 	delete brick;
+}
+
+void Clean()
+{
 }
