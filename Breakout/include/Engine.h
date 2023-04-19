@@ -25,11 +25,9 @@ public:
 
 private:
 	Engine() {}
-	void BounceOfPaddle();
 
 	static Engine* _instance;
 	bool _isRunning = false;
-	std::vector<Entity*> _entityMap;
 
 	SDL_Window* _window = nullptr;
 	SDL_Renderer* _renderer = nullptr;

@@ -37,24 +37,13 @@ void Engine::Init()
 
 	LevelParser::GetInstance()->Load("Level", "res/Level.xml");
 
-	_levelMap = LevelParser::GetInstance()->GetLevel("Level");
-
-    player = new Paddle(new Properties("player", 433, 980, 158, 20));
-	_entityMap.push_back(player);
-
-	ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16 ));
-	_entityMap.push_back(ball);
+	_levelMap = LevelParser::GetInstance()->GetLevel("Level");   
 }
 
 void Engine::Clean()
 {
 	TextureManager::GetInstance()->Clean();
 
-    delete player;
-	delete ball;
-
-	Level::Clean();
-	
 	SDL_DestroyRenderer(_renderer);
 	SDL_DestroyWindow(_window);
 }
@@ -68,12 +57,7 @@ void Engine::Render()
     SDL_SetRenderDrawColor(_renderer, 200, 0, 100, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(_renderer);
 
-    TextureManager::GetInstance()->Draw("background", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);   
- 
-	for (auto i = 0; i < _entityMap.size(); i++)
-	{
-		_entityMap[i]->Draw();
-	}
+    TextureManager::GetInstance()->Draw("background", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);   	
 
 	_levelMap->Render();
 
@@ -82,28 +66,10 @@ void Engine::Render()
 
 void Engine::Update()
 {
-	player->Update();	
-	ball->Update();		
-	
 	_levelMap->Update();
-
-	BounceOfPaddle();
 }
 
 void Engine::Events()
 {
 	Input::GetInstance()->HandleEvents();
-}
-
-void Engine::BounceOfPaddle()
-{
-	if (CollisionHandler::GetInstance()->CheckCollision(player, ball) && ball->_box.x < player->_box.x + player->_box.w / 2)
-	{
-		ball->SetVelocity(-1, -1);
-	}
-
-	else if (CollisionHandler::GetInstance()->CheckCollision(player, ball) && ball->_box.x > player->_box.x + player->_box.w / 2)
-	{
-		ball->SetVelocity(1, -1);
-	}
 }
