@@ -21,7 +21,6 @@ private:
 	void Reset();
 	void InitRandomSpeed();
 	bool _alive = false;
-	bool _isMoving = false;
 
 	Vector2D _velocity;
 };
