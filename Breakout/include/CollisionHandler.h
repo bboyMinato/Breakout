@@ -11,7 +11,7 @@ public:
 	static CollisionHandler* GetInstance() { return _instance = (_instance != nullptr) ? _instance : new CollisionHandler(); }
 	static bool CheckCollision(SDL_Rect a, SDL_Rect b);	
 	bool CheckCollision(Entity* a, Entity* b);
-	//static bool CheckCollision(Entity* a, std::vector<Brick*> *bricks);
+	bool CheckCollision(Entity* a, Brick* brick);
 
 private:
 	CollisionHandler() {}
