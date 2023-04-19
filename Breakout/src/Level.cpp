@@ -1,7 +1,7 @@
 #include "../include/Level.h"
 #include "../include/Engine.h"
 #include "../include/CollisionHandler.h"
-Brick* brick;
+Brick* brick = nullptr;
 
 Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTypeList bricklist, Board grid)
 {
@@ -12,12 +12,12 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 	_brickType = bricklist;
 	_board = grid;
 
-	for (size_t i = 0; i < _brickType.size(); i++)
+	for (auto i = 0; i < _brickType.size(); i++)	
 		TextureManager::GetInstance()->LoadTexture(_brickType[i].ID, _brickType[i].texture);		
 
-	for (size_t i = 0; i < _rowCount; i++)
+	for (auto i = 0; i < _rowCount; i++)
 	{
-		for (size_t j = 0; j < _colCount; j++)
+		for (auto j = 0; j < _colCount; j++)
 		{
 			std::string brickID = _board[i][j];
 
@@ -44,7 +44,7 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 				}
 
 				else if (brickID == "H")
-				{
+				{				
 					brick = new Brick(&_brickType[2]);
 					brick->SetPositionX(colSpacing + j * brick->GetWidth());
 					brick->SetPositionY(rowSpacing + i * brick->GetHeight());	
@@ -59,15 +59,15 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 					brick->SetPositionX(colSpacing + j * brick->GetWidth());
 					brick->SetPositionY(rowSpacing + i * brick->GetHeight());	
 					brick->SetBox(brick->GetPosition().X, brick->GetPosition().Y);
-					_bricks.push_back(brick);					
+					_bricks.push_back(brick);				
 					break;
 				}
 			}				
 		}	
-	}
-
+	}		
+	
 	_paddle = new Paddle(new Properties("player", 433, 980, 158, 20));
-	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));	
+	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));		
 }
 
 void Level::Render()
@@ -77,7 +77,7 @@ void Level::Render()
 		_bricks[i]->Render();
 	}
 	_paddle->Draw();
-	_ball->Draw();
+	_ball->Draw();	
 }
 
 void Level::Update()
@@ -90,11 +90,12 @@ void Level::Update()
 
 	for (auto i = 0; i < _bricks.size(); i++)
 	{		
-		if (_bricks[i]->GetHP() <= 0)
+		// -2147483648 represents value of std::numeric_limits<float>::infinity()
+		if (_bricks[i]->GetHP() <= 0 && _bricks[i]->GetHP() != -2147483648)
 		{
 			_bricks.erase(_bricks.begin() + i);
-		}
-	}
+		}	
+	}	
 }
 
 Level::~Level()
@@ -121,9 +122,8 @@ void Level::CollisionWithBricks()
 	{		
 		if (CollisionHandler::GetInstance()->CheckCollision(_ball, _bricks[i]))
 		{
-			_ball->Bounce();
-			_bricks[i]->TakeDamage();
-						
+			_ball->Bounce();			
+			_bricks[i]->TakeDamage();						
 		}
 	}
 }

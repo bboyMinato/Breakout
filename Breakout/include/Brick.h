@@ -4,6 +4,7 @@
 #include <vector>
 #include "TextureManager.h"
 #include "Vector2D.h"
+#include <limits>
 
 struct BrickType
 {	
@@ -45,7 +46,7 @@ public:
 protected:
 	int _width = 0;
 	int _height = 0;
-	int _healthPoints = 0;
+	float _healthPoints = 0;
 
 	BrickType* _bricktype = nullptr;
 	Vector2D _position;			
