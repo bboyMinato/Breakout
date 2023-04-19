@@ -3,15 +3,14 @@
 #include "../include/CollisionHandler.h"
 
 Brick::Brick(BrickType* bricktype)
-{	
+{
 	_width = 92;
 	_height = 32;
 	_bricktype = bricktype;	
-	_position.X = 25;
-	_position.Y = 25;
+	_healthPoints = _bricktype->hitPoints;
 
 	_box = { static_cast<int>(_position.X), static_cast<int>(_position.Y), _width, _height };
-}
+}	
 
 Brick::~Brick()
 {
@@ -24,11 +23,22 @@ void Brick::Render()
 
 void Brick::Update()
 {
-	//if(CollisionHandler::GetInstance()->CheckCollision(ball)
+
 }
 
 void Brick::Clean()
 {
 	
+}
+
+void Brick::SetBox(int x, int y)
+{
+	_box.x = x;
+	_box.y = y;
+}
+
+void Brick::TakeDamage()
+{
+	_healthPoints--;	
 }
 	

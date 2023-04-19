@@ -28,20 +28,25 @@ public:
 	void Update();
 	void Clean();
 	
+	//setters
 	void SetPositionX(float pos) { _position.X = pos; }
 	void SetPositionY(float pos) { _position.Y = pos; }
+	void SetBox(int x, int y);
 
+	//getters
 	inline int GetWidth() { return _width; }
 	inline int GetHeight() { return _height; }
-
-	SDL_Rect _box = { 0,0,0,0 };
+	inline Vector2D GetPosition() { return _position; }	
+	inline int GetHP() { return _healthPoints; }
+	
+	void TakeDamage();
+	SDL_Rect _box = { 0, 0, 0, 0 };
 
 protected:
 	int _width = 0;
 	int _height = 0;
+	int _healthPoints = 0;
 
 	BrickType* _bricktype = nullptr;
-	Vector2D _position;	
-
-	//std::vector<Brick*> _bricks;
+	Vector2D _position;			
 };
