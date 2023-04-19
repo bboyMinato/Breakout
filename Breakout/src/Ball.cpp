@@ -20,8 +20,9 @@ void Ball::Update()
 
 	_box = { (int)_transform->X, (int)_transform->Y, _width, _height };
 
-	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE))
+	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && _isMoving == false)
 	{	
+		_isMoving = true;
 		InitRandomSpeed();
 	}
 		
@@ -77,6 +78,8 @@ void Ball::Reset()
 
 	_velocity.X = 0;
 	_velocity.Y = 0;
+
+	_isMoving = false;
 }
 
 void Ball::InitRandomSpeed()
