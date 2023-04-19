@@ -1,10 +1,11 @@
 #include "../include/Ball.h"
 #include "../include/TextureManager.h"
 #include "../include/Engine.h"
+#include "../include/Input.h"
 
 Ball::Ball(Properties* props) : Entity(props)
-{	
-	Reset();		
+{		
+	Reset();	
 }
 
 void Ball::Draw()
@@ -18,6 +19,11 @@ void Ball::Update()
 	_transform->TranslateY(_velocity.Y);
 
 	_box = { (int)_transform->X, (int)_transform->Y, _width, _height };
+
+	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE))
+	{	
+		InitRandomSpeed();
+	}
 		
 	CheckBounds();
 }
@@ -27,15 +33,15 @@ void Ball::Clean()
 	TextureManager::GetInstance()->Clean();
 }
 
+void Ball::Bounce()
+{	
+	_velocity.Y *= -1;
+}
+
 void Ball::SetVelocity(float x, float y)
 {
 	_velocity.X *= x;
 	_velocity.Y *= y;
-}
-
-void Ball::BounceOfPaddle()
-{
-
 }
 
 void Ball::CheckBounds()
@@ -69,7 +75,8 @@ void Ball::Reset()
 	_transform->X = SCREEN_WIDTH  / 2.0f - _width / 2.0f;
 	_transform->Y = SCREEN_HEIGHT / 2.0f - _height / 2.0f;
 
-	InitRandomSpeed();
+	_velocity.X = 0;
+	_velocity.Y = 0;
 }
 
 void Ball::InitRandomSpeed()

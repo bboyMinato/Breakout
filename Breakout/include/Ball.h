@@ -12,14 +12,15 @@ public:
 	virtual void Draw();
 	virtual void Update();
 	virtual void Clean();
+	void Bounce();
 
 	void SetVelocity(float x, float y);
-	void BounceOfPaddle();
 
 private:
 	void CheckBounds();
 	void Reset();
 	void InitRandomSpeed();
+	bool _alive = false;
 
 	Vector2D _velocity;
 };
