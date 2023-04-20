@@ -19,11 +19,8 @@ bool CollisionHandler::CheckCollision(Entity* a, Entity* b)
 
 bool CollisionHandler::CheckCollision(Entity* a, Brick* brick)
 {    
-     bool x_overlaps = (a->_box.x < brick->_box.x + brick->_box.w) && (a->_box.x + a->_box.w > brick->_box.x);
-     bool y_overlaps = (a->_box.y < brick->_box.y + brick->_box.h) && (a->_box.y + a->_box.h > brick->_box.y);
+    bool x_overlaps = (a->_box.x < brick->_box.x + brick->_box.w) && (a->_box.x + a->_box.w > brick->_box.x);
+    bool y_overlaps = (a->_box.y < brick->_box.y + brick->_box.h) && (a->_box.y + a->_box.h > brick->_box.y);     
 
-    if (x_overlaps && y_overlaps)
-            return true;
-
-    return false;
+     return (x_overlaps && y_overlaps);
 }
