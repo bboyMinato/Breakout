@@ -4,6 +4,7 @@
 #include "Brick.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include "Sound.h"
 
 class Level
 {
@@ -24,7 +25,8 @@ private:
 	Board _board;		
 	Ball* _ball = nullptr;
 	Paddle* _paddle = nullptr;
-	Brick* _brick = nullptr;	
+	Brick* _brick = nullptr;
+	Sound* _sound = nullptr;
 
 	void BounceOfPaddle();
 	void CollisionWithBricks();

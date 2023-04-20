@@ -67,6 +67,11 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 	
 	_paddle = new Paddle(new Properties("player", SCREEN_WIDTH / 2 - 79, 980, 158, 20));
 	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));		
+
+	_sound = new Sound();
+	_sound->LoadMusic("res\\sfx\\Checking Manifest.mp3");
+	_sound->SetVolume(10);
+	_sound->PlayMusic(-1);
 }
 
 void Level::Render()
@@ -81,6 +86,8 @@ void Level::Render()
 
 void Level::Update()
 {
+	
+
 	_paddle->Update();
 	_ball->Update();
 

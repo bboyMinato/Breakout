@@ -711,4 +711,10 @@
     <Xml Include="res\.xml" />
     <Xml Include="res\Level.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\sfx\level_music.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\sfx\Checking Manifest.mp3" />
+  </ItemGroup>
 </Project>
