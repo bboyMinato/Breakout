@@ -1,7 +1,6 @@
 #include "../include/Level.h"
 #include "../include/Engine.h"
 #include "../include/CollisionHandler.h"
-Brick* brick = nullptr;
 
 Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTypeList bricklist, Board grid)
 {
@@ -25,48 +24,48 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 			{
 				if (brickID == "S")
 				{
-					brick = new Brick(&_brickType[k]);
-					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());	
-					brick->SetBox(brick->GetPosition().X, brick->GetPosition().Y);
-					_bricks.push_back(brick);
+					_brick = new Brick(&_brickType[k]);
+					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
+					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());	
+					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);
+					_bricks.push_back(_brick);
 					break;
 				}
 
 				else if (brickID == "M")
 				{
-					brick = new Brick(&_brickType[1]);
-					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());
-					brick->SetBox(brick->GetPosition().X, brick->GetPosition().Y);
-					_bricks.push_back(brick);
+					_brick = new Brick(&_brickType[1]);
+					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
+					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());
+					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);
+					_bricks.push_back(_brick);
 					break;
 				}
 
 				else if (brickID == "H")
 				{				
-					brick = new Brick(&_brickType[2]);
-					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());	
-					brick->SetBox(brick->GetPosition().X, brick->GetPosition().Y);				
-					_bricks.push_back(brick);
+					_brick = new Brick(&_brickType[2]);
+					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
+					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());	
+					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);				
+					_bricks.push_back(_brick);
 					break;
 				}
 
 				else if (brickID == "I")
 				{
-					brick = new Brick(&_brickType[3]);
-					brick->SetPositionX(colSpacing + j * brick->GetWidth());
-					brick->SetPositionY(rowSpacing + i * brick->GetHeight());	
-					brick->SetBox(brick->GetPosition().X, brick->GetPosition().Y);
-					_bricks.push_back(brick);				
+					_brick = new Brick(&_brickType[3]);
+					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
+					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());	
+					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);
+					_bricks.push_back(_brick);				
 					break;
 				}
 			}				
 		}	
 	}		
 	
-	_paddle = new Paddle(new Properties("player", 433, 980, 158, 20));
+	_paddle = new Paddle(new Properties("player", SCREEN_WIDTH / 2 - 79, 980, 158, 20));
 	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));		
 }
 
@@ -100,20 +99,23 @@ void Level::Update()
 
 Level::~Level()
 {
-	delete brick;
+	delete _brick;
+	delete _paddle;
+	delete _ball;
+	
 }
 
 void Level::BounceOfPaddle()
 {
-	if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) && _ball->_box.x < _paddle->_box.x + _paddle->_box.w / 2)
-	{
-		_ball->SetVelocity(-1, -1);
-	}
-
-	else if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) && _ball->_box.x > _paddle->_box.x + _paddle->_box.w / 2)
+	if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) /* && _ball->_box.x + _ball->_box.h < _paddle->_box.x + _paddle->_box.w / 2*/)
 	{
 		_ball->SetVelocity(1, -1);
 	}
+
+	/*else if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) && _ball->_box.x + _ball->_box.h > _paddle->_box.x + _paddle->_box.w / 2)
+	{
+		_ball->SetVelocity(1, -1);
+	}*/
 }
 
 void Level::CollisionWithBricks()
