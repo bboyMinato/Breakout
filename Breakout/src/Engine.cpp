@@ -15,7 +15,7 @@ void Engine::Init()
 {
 	_isRunning = true;
 
-	if (SDL_Init(SDL_INIT_VIDEO) > 0)
+	if (SDL_Init(SDL_INIT_VIDEO || SDL_INIT_AUDIO) > 0 )
 		std::cout << "SDL_Init has failed: " << SDL_GetError() << std::endl;
 
 	if (!(IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG)))
