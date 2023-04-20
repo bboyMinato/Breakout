@@ -15,7 +15,7 @@ Sound::~Sound()
 
 void Sound::LoadMusic(std::string filepath)
 {	
-	music = Mix_LoadMUS("res\\sfx\\level_music.wav");
+	music = Mix_LoadMUS(filepath.c_str());
 
 	if (music == nullptr)
 		std::cout << "Failed to load the music!" << " " << Mix_GetError() << std::endl;

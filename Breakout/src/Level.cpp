@@ -69,7 +69,7 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));		
 
 	_sound = new Sound();
-	_sound->LoadMusic("res\\sfx\\Checking Manifest.mp3");
+	_sound->LoadMusic("res\\sfx\\level_music.wav");
 	_sound->SetVolume(10);
 	_sound->PlayMusic(-1);
 }
@@ -86,8 +86,6 @@ void Level::Render()
 
 void Level::Update()
 {
-	
-
 	_paddle->Update();
 	_ball->Update();
 
@@ -109,20 +107,20 @@ Level::~Level()
 	delete _brick;
 	delete _paddle;
 	delete _ball;
-	
+	delete _sound;
 }
 
 void Level::BounceOfPaddle()
 {
-	if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) /* && _ball->_box.x + _ball->_box.h < _paddle->_box.x + _paddle->_box.w / 2*/)
+	if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball)  && _ball->_box.x + _ball->_box.h < _paddle->_box.x + _paddle->_box.w / 2)
 	{
 		_ball->SetVelocity(1, -1);
 	}
 
-	/*else if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) && _ball->_box.x + _ball->_box.h > _paddle->_box.x + _paddle->_box.w / 2)
+	else if (CollisionHandler::GetInstance()->CheckCollision(_paddle, _ball) && _ball->_box.x + _ball->_box.h > _paddle->_box.x + _paddle->_box.w / 2)
 	{
-		_ball->SetVelocity(1, -1);
-	}*/
+		_ball->SetVelocity(-1, -1);
+	}
 }
 
 void Level::CollisionWithBricks()
