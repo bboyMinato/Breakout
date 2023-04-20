@@ -28,6 +28,7 @@
     <ClCompile Include="src\Parser.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Paddle.cpp" />
+    <ClCompile Include="src\Sound.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="thirdparty\TinyXML\tinystr.cpp" />
     <ClCompile Include="thirdparty\TinyXML\tinyxml.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="include\Level.h" />
     <ClInclude Include="include\Parser.h" />
     <ClInclude Include="include\Paddle.h" />
+    <ClInclude Include="include\Sound.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\Vector2D.h" />
@@ -341,13 +343,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>thirdparty\SDL Mixer;thirdparty\SDL2\include;thirdparty\TinyXML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdparty\SDL2 Mixer\include;thirdparty\SDL2\include;thirdparty\TinyXML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>thirdparty\SDL2\lib\x64;thirdparty\TinyXML;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>thirdparty\SDL2 Mixer\lib\x64;thirdparty\SDL2\lib\x64;thirdparty\TinyXML;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
