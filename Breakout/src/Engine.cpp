@@ -1,9 +1,6 @@
 #include "../include/Engine.h"
 #include "../include/TextureManager.h"
-#include "../include/Paddle.h"
 #include "../include/Input.h"
-#include "../include/Ball.h"
-#include "../include/CollisionHandler.h"
 #include "../include/Parser.h"
 #include "../include/Level.h"
 
