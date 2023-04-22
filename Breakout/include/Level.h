@@ -27,7 +27,7 @@ private:
 	Paddle* _paddle = nullptr;
 	Brick* _brick = nullptr;
 	Sound* _sound = nullptr;
-
+	
 	void BounceOfPaddle();
 	void CollisionWithBricks();
 };

@@ -49,5 +49,5 @@ protected:
 	float _healthPoints = 0;
 
 	BrickType* _bricktype = nullptr;
-	Vector2D _position;			
+	Vector2D _position;		
 };

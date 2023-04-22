@@ -258,6 +258,7 @@
     <Xml Include="res\Level.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="res\sfx\Block Break 2.wav" />
     <Media Include="res\sfx\Checking Manifest.mp3" />
     <Media Include="res\sfx\level_music.wav" />
   </ItemGroup>

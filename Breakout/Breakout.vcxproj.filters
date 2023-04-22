@@ -716,5 +716,8 @@
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="res\sfx\Checking Manifest.mp3" />
+    <Media Include="res\sfx\Block Break 2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -11,8 +11,10 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 	_brickType = bricklist;
 	_board = grid;
 
-	for (auto i = 0; i < _brickType.size(); i++)	
+	for (auto i = 0; i < _brickType.size(); i++)
+	{
 		TextureManager::GetInstance()->LoadTexture(_brickType[i].ID, _brickType[i].texture);		
+	}
 
 	for (auto i = 0; i < _rowCount; i++)
 	{
@@ -66,10 +68,10 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 	}		
 	
 	_paddle = new Paddle(new Properties("player", SCREEN_WIDTH / 2 - 79, 980, 158, 20));
-	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));		
-
+	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));
 	_sound = new Sound();
-	_sound->LoadMusic("res\\sfx\\level_music.wav");
+
+	_sound->LoadMusic("level music", "res\\sfx\\level_music.wav");
 	_sound->SetVolume(10);
 	_sound->PlayMusic(-1);
 }

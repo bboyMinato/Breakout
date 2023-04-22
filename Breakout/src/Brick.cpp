@@ -7,7 +7,7 @@ Brick::Brick(BrickType* bricktype)
 	_width = 92;
 	_height = 32;
 	_bricktype = bricktype;	
-	_healthPoints = _bricktype->hitPoints;
+	_healthPoints = _bricktype->hitPoints;	
 	
 	if (_bricktype->hitPoints == 0)
 		_healthPoints = std::numeric_limits<float>::infinity();	

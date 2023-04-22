@@ -12,7 +12,7 @@
 			Texture="res\img\Bricks\Red\red_0.png"
 			HitPoints="1"
 			HitSound="Sounds/Hit_01.wav"
-			BreakSound="Sounds/Break_01.wav"
+			BreakSound="res\sfx\Block Break 2.wav"
 			BreakScore="50" />
 		<!-- Medium Brick -->
 		<BrickType
@@ -20,7 +20,7 @@
 			Texture="res\img\Bricks\Blue\blue_0.png"
 			HitPoints="2"
 			HitSound="Sounds/Hit_02.wav"
-			BreakSound="Sounds/Break_02.wav"
+			BreakSound="res\sfx\Block Break 2.wav"
 			BreakScore="100" />
 		<!-- Hard Brick -->
 		<BrickType
@@ -28,14 +28,14 @@
 			Texture="res\img\Bricks\Purple\purple_0.png"
 			HitPoints="3"
 			HitSound="Sounds/Hit_03.wav"
-			BreakSound="Sounds/Break_03.wav"
+			BreakSound="res\sfx\Block Break 2.wav"
 			BreakScore="150" />
 		<!-- Impenetrable Brick -->
 		<BrickType
 			Id="I"
 			Texture="res\img\Bricks\Orange\orange_0.png"
 			HitPoints="Infinite"
-			HitSound="Sounds/Hit_04.wav" />
+			HitSound="res\sfx\Block Break 2.wav" />
 	</BrickTypes>
 	
 <Bricks>

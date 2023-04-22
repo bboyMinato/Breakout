@@ -9,26 +9,28 @@ Sound::Sound()
 
 Sound::~Sound()
 {
-	Mix_FreeMusic(music);
-	music = nullptr;
+	Mix_FreeMusic(_music);
+	_music = nullptr;
 }
 
-void Sound::LoadMusic(std::string filepath)
+Mix_Music* Sound::LoadMusic(std::string id, std::string filepath)
 {	
-	music = Mix_LoadMUS(filepath.c_str());
+	_music = Mix_LoadMUS(filepath.c_str());
 
-	if (music == nullptr)
+	if (_music == nullptr)
 		std::cout << "Failed to load the music!" << " " << Mix_GetError() << std::endl;
+
+	_soundMap[id] = _music;
+
+	return _music;
 }
 
-// Number of times to play music
-// 0 means play once and stop
-// -1 means plays infinitely 
+
 void Sound::PlayMusic(int loops)
 {	
-	if (music != nullptr)
+	if (_music != nullptr)
 	{		
-		Mix_PlayMusic(music, loops);
+		Mix_PlayMusic(_music, loops);
 	}		
 }
 
