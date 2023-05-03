@@ -23,45 +23,14 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 			std::string brickID = _board[i][j];
 
 			for (auto k = 0; k < _brickType.size(); k++)
-			{
-				if (brickID == "S")
+			{				
+				if (brickID == _brickType[k].ID)
 				{
 					_brick = new Brick(&_brickType[k]);
-					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
-					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());	
-					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);
-					_bricks.push_back(_brick);
-					break;
-				}
-
-				else if (brickID == "M")
-				{
-					_brick = new Brick(&_brickType[1]);
 					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
 					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());
 					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);
 					_bricks.push_back(_brick);
-					break;
-				}
-
-				else if (brickID == "H")
-				{				
-					_brick = new Brick(&_brickType[2]);
-					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
-					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());	
-					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);				
-					_bricks.push_back(_brick);
-					break;
-				}
-
-				else if (brickID == "I")
-				{
-					_brick = new Brick(&_brickType[3]);
-					_brick->SetPositionX(colSpacing + j * _brick->GetWidth());
-					_brick->SetPositionY(rowSpacing + i * _brick->GetHeight());	
-					_brick->SetBox(_brick->GetPosition().X, _brick->GetPosition().Y);
-					_bricks.push_back(_brick);				
-					break;
 				}
 			}				
 		}	
