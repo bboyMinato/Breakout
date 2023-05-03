@@ -13,8 +13,9 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 
 	for (auto i = 0; i < _brickType.size(); i++)
 	{
-		TextureManager::GetInstance()->LoadTexture(_brickType[i].ID, _brickType[i].texture);		
-	}
+		TextureManager::GetInstance()->LoadTexture(_brickType[i].ID, _brickType[i].texture);	
+		Sound::GetInstance()->LoadChunk(_brickType[i].ID, _brickType[i].breakSound);
+	}	
 
 	for (auto i = 0; i < _rowCount; i++)
 	{
@@ -38,11 +39,10 @@ Level::Level(int rowCount, int colCount, int rowSpacing, int colSpacing, BrickTy
 	
 	_paddle = new Paddle(new Properties("player", SCREEN_WIDTH / 2 - 79, 980, 158, 20));
 	_ball = new Ball(new Properties("ball", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 16, 16));
-	_sound = new Sound();
-
-	_sound->LoadMusic("level music", "res\\sfx\\level_music.wav");
-	_sound->SetVolume(10);
-	_sound->PlayMusic(-1);
+	
+	Sound::GetInstance()->LoadMusic("level music", "res\\sfx\\level_music.wav");	
+	Sound::GetInstance()->SetMusicVolume(10);
+	Sound::GetInstance()->PlayMusic(-1);	
 }
 
 void Level::Render()
@@ -68,7 +68,8 @@ void Level::Update()
 		// -2147483648 represents value of std::numeric_limits<float>::infinity()
 		if (_bricks[i]->GetHP() <= 0 && _bricks[i]->GetHP() != -2147483648)
 		{
-			_bricks.erase(_bricks.begin() + i);
+			Sound::GetInstance()->PlayChunk(_bricks[i]->_breakSoundID);
+			_bricks.erase(_bricks.begin() + i);			
 		}	
 	}	
 }
@@ -77,8 +78,7 @@ Level::~Level()
 {
 	delete _brick;
 	delete _paddle;
-	delete _ball;
-	delete _sound;
+	delete _ball;	
 }
 
 void Level::BounceOfPaddle()

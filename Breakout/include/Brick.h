@@ -42,6 +42,7 @@ public:
 	
 	void TakeDamage();
 	SDL_Rect _box = { 0, 0, 0, 0 };
+	std::string _breakSoundID;
 
 protected:
 	int _width = 0;

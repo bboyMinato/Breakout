@@ -13,14 +13,14 @@ Sound::~Sound()
 	_music = nullptr;
 }
 
-Mix_Music* Sound::LoadMusic(std::string id, std::string filepath)
+Mix_Music* Sound::LoadMusic(std::string ID, std::string filepath)
 {	
 	_music = Mix_LoadMUS(filepath.c_str());
 
 	if (_music == nullptr)
 		std::cout << "Failed to load the music!" << " " << Mix_GetError() << std::endl;
 
-	_soundMap[id] = _music;
+	_soundMap[ID] = _music;
 
 	return _music;
 }
@@ -39,8 +39,30 @@ void Sound::PauseMusic()
 	Mix_PauseMusic();
 }
 
-// range from 0 to 128
-void Sound::SetVolume(int volume)
+void Sound::SetMusicVolume(int volume)
 {
 	Mix_VolumeMusic(volume);
+}
+
+Mix_Chunk* Sound::LoadChunk(std::string ID, std::string filepath)
+{
+	if (filepath != "")
+	{
+		_chunk = Mix_LoadWAV(filepath.c_str());
+	}	
+
+	if (_chunk == nullptr)
+		std::cout << "Failed to load the chunk! Error: " << Mix_GetError() << std::endl;
+
+	_chunkMap[ID] = _chunk;
+	
+	return _chunk;
+}
+
+void Sound::PlayChunk(std::string ID)
+{
+	if (_chunk != nullptr)
+	{
+		Mix_PlayChannel(-1, _chunkMap[ID], 1);
+	}
 }

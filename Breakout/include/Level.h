@@ -25,8 +25,7 @@ private:
 	Board _board;		
 	Ball* _ball = nullptr;
 	Paddle* _paddle = nullptr;
-	Brick* _brick = nullptr;
-	Sound* _sound = nullptr;
+	Brick* _brick = nullptr;	
 	
 	void BounceOfPaddle();
 	void CollisionWithBricks();
