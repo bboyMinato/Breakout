@@ -1,10 +1,12 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "TextureManager.h"
 #include "Brick.h"
 #include "Ball.h"
-#include "Paddle.h"
 #include "Sound.h"
+
+class Paddle;
 
 class Level
 {
@@ -27,7 +29,11 @@ private:
 	Paddle* _paddle = nullptr;
 	Brick* _brick = nullptr;	
 	
+	
+public:
 	void BounceOfPaddle();
 	void CollisionWithBricks();
+	void SpawnBoard();
+	void LoadAssets();
 };
 

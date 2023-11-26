@@ -29,4 +29,6 @@ void TextureManager::Clean()
 		SDL_DestroyTexture(it->second);
 
 	_textureMap.clear();
+	_texture = nullptr;
+	delete _texture;
 }

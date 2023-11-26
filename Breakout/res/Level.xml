@@ -2,8 +2,8 @@
 <Level
 	RowCount="3"
 	ColumnCount="20"
-	RowSpacing="3"
-	ColumnSpacing="3"
+	RowSpacing="10"
+	ColumnSpacing="50"
 	BackgroundTexture="Textures/Boards/Board_01.dds">
 	<BrickTypes>
 		<!-- Soft Brick -->
@@ -11,15 +11,15 @@
 			Id="S"
 			Texture="res\img\Bricks\Red\red_0.png"
 			HitPoints="1"
-			HitSound="Sounds/Hit_01.wav"
-			BreakSound="res\sfx\Block Break 2.wav"
+			HitSound="res\sfx\Breakout_Sounds_Collision.wav"
+			BreakSound="res\sfx\Breakout_Sounds_Collision.wav"
 			BreakScore="50" />
 		<!-- Medium Brick -->
 		<BrickType
 			Id="M"
 			Texture="res\img\Bricks\Blue\blue_0.png"
 			HitPoints="2"
-			HitSound="Sounds/Hit_02.wav"
+			HitSound="res\sfx\Breakout_Sounds_Collision.wav"
 			BreakSound="res\sfx\Block Break 2.wav"
 			BreakScore="100" />
 		<!-- Hard Brick -->
@@ -27,7 +27,7 @@
 			Id="H"
 			Texture="res\img\Bricks\Purple\purple_0.png"
 			HitPoints="3"
-			HitSound="Sounds/Hit_03.wav"
+			HitSound="res\sfx\Breakout_Sounds_Collision.wav"
 			BreakSound="res\sfx\Block Break 2.wav"
 			BreakScore="150" />
 		<!-- Impenetrable Brick -->
@@ -35,7 +35,7 @@
 			Id="I"
 			Texture="res\img\Bricks\Orange\orange_0.png"
 			HitPoints="Infinite"
-			HitSound="res\sfx\Block Break 2.wav" />
+			HitSound="res\sfx\Breakout_Sounds_Collision.wav" />
 	</BrickTypes>
 	
 <Bricks>

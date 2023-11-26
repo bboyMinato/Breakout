@@ -54,16 +54,17 @@ bool LevelParser::Parse(std::string id, std::string source)
 
 BrickType LevelParser::ParseBricks(TiXmlElement* xmlBricks)
 {
-	BrickType brickAttribute;		
-		
+	BrickType brickAttribute;
+
 	brickAttribute.ID = xmlBricks->Attribute("Id");
-		
-	brickAttribute.texture = xmlBricks->Attribute("Texture");		
 
-	xmlBricks->Attribute("HitPoints", &brickAttribute.hitPoints);	
-		
-	brickAttribute.hitSound = xmlBricks->Attribute("HitSound");	
+	brickAttribute.texture = xmlBricks->Attribute("Texture");
 
+	xmlBricks->Attribute("HitPoints", &brickAttribute.hitPoints);
+
+	if (xmlBricks->Attribute("HitSound"))
+		brickAttribute.hitSound = xmlBricks->Attribute("HitSound");		
+	
 	if (xmlBricks->Attribute("BreakSound"))
 		brickAttribute.breakSound = xmlBricks->Attribute("BreakSound");	
 

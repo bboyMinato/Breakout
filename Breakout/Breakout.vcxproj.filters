@@ -63,6 +63,9 @@
     <ClCompile Include="src\Sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\StateManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thirdparty\SDL2\SDL2-2.26.3\include\begin_code.h">
@@ -647,6 +650,12 @@
     <ClInclude Include="include\Sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CGameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\img\space_background.png">
@@ -717,6 +726,9 @@
     </Media>
     <Media Include="res\sfx\Checking Manifest.mp3" />
     <Media Include="res\sfx\Block Break 2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\sfx\Breakout_Sounds_Collision.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>

@@ -15,7 +15,7 @@ public:
 	// Load music into the map 
 	// ID is the ID that will be used to store and access the music
 	// filepath is the source path of the music 
-	Mix_Music* LoadMusic(std::string ID, std::string filepath);
+	void LoadMusic(std::string ID, std::string filepath);
 
 	// Number of times to play music
 	// 0 means play once and stop
@@ -31,10 +31,13 @@ public:
 	// Load chunk into the map 
 	// ID is the ID that will be used to store and access the chunk
 	// filepath is the source path of the music 
-	Mix_Chunk* LoadChunk(std::string ID, std::string filepath);
+	void LoadChunk(std::string ID, std::string filepath);
 
 	// Play requested chunk
 	void PlayChunk(std::string ID);
+
+	// Set chunk volume
+	void SetChunkVolume(Mix_Chunk* chunk, int volume);
 
 private:	
 	Sound();

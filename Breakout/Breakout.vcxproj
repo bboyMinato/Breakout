@@ -29,6 +29,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Paddle.cpp" />
     <ClCompile Include="src\Sound.cpp" />
+    <ClCompile Include="src\StateManager.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="thirdparty\TinyXML\tinystr.cpp" />
     <ClCompile Include="thirdparty\TinyXML\tinyxml.cpp" />
@@ -39,6 +40,7 @@
   <ItemGroup>
     <ClInclude Include="include\Ball.h" />
     <ClInclude Include="include\Brick.h" />
+    <ClInclude Include="include\CGameState.h" />
     <ClInclude Include="include\CollisionHandler.h" />
     <ClInclude Include="include\Engine.h" />
     <ClInclude Include="include\Entity.h" />
@@ -47,6 +49,7 @@
     <ClInclude Include="include\Parser.h" />
     <ClInclude Include="include\Paddle.h" />
     <ClInclude Include="include\Sound.h" />
+    <ClInclude Include="include\StateManager.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\Vector2D.h" />
@@ -259,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\sfx\Block Break 2.wav" />
+    <Media Include="res\sfx\Breakout_Sounds_Collision.wav" />
     <Media Include="res\sfx\Checking Manifest.mp3" />
     <Media Include="res\sfx\level_music.wav" />
   </ItemGroup>

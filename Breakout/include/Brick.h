@@ -38,16 +38,19 @@ public:
 	inline int GetWidth() { return _width; }
 	inline int GetHeight() { return _height; }
 	inline Vector2D GetPosition() { return _position; }	
-	inline int GetHP() { return _healthPoints; }
-	
+	inline float GetHP() { return _healthPoints; }
+	inline int GetBreakScore() { return BreakScore;  }
+
 	void TakeDamage();
 	SDL_Rect _box = { 0, 0, 0, 0 };
-	std::string _breakSoundID;
+	std::string _brickTypeID;
+	std::string _hitSoundID;
 
 protected:
 	int _width = 0;
 	int _height = 0;
 	float _healthPoints = 0;
+	int BreakScore = 0; 
 
 	BrickType* _bricktype = nullptr;
 	Vector2D _position;		

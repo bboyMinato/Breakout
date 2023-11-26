@@ -8,8 +8,9 @@ Brick::Brick(BrickType* bricktype)
 	_height = 32;
 	_bricktype = bricktype;	
 	_healthPoints = _bricktype->hitPoints;	
-	_breakSoundID = _bricktype->ID;
-	
+	_brickTypeID = _bricktype->ID;	
+	BreakScore = _bricktype->breakScore;
+		
 	if (_bricktype->hitPoints == 0)
 		_healthPoints = std::numeric_limits<float>::infinity();	
 
